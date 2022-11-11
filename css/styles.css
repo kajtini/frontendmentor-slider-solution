@@ -1,0 +1,266 @@
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+:root {
+  --clr-primary-dark: hsl(240, 38%, 20%);
+  --clr-primary-grayish: hsl(240, 18%, 77%);
+
+  --font-primary: "Inter", sans-serif;
+
+  --fw-400: 300;
+  --fw-500: 500;
+  --fw-700: 700;
+}
+
+body {
+  font-family: var(--font-primary);
+  color: var(--clr-primary-dark);
+  background-image: url(../images/pattern-curve.svg);
+  background-repeat: no-repeat;
+  background-position: contain;
+  background-position-y: 35rem;
+}
+
+main {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+}
+
+.card {
+  padding: 3rem 2rem;
+  transition: transform 400ms cubic-bezier(0.75, 0.07, 0.4, 0.9);
+
+  width: 100%;
+
+  position: absolute;
+  left: 0;
+}
+
+[data-status="inactive"] {
+  transform: translateX(-100%);
+}
+
+[data-status="active"] {
+  transform: translate(0);
+}
+
+[data-status="after"] {
+  transform: translateX(100%);
+}
+
+[data-status="before"] {
+  transform: translateX(-100%);
+}
+
+[data-status="return-to-beginning-right"] {
+  transform: translateX(-100%);
+  transition: none;
+}
+
+[data-status="return-to-beginning-left"] {
+  transform: translateX(100%);
+  transition: none;
+}
+
+.preview {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 4rem;
+
+  position: relative;
+}
+
+.preview__img {
+  height: 16rem;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.preview__bg-pattern {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 19rem;
+  z-index: -1;
+}
+
+.icon {
+  height: 1rem;
+  cursor: pointer;
+}
+
+.btn {
+  display: flex;
+  gap: 2rem;
+  padding: 0.8rem 1rem;
+  border-radius: 30px;
+  border: none;
+  background-color: hsl(0, 0%, 100%);
+
+  position: absolute;
+  bottom: -7%;
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.description-wrapper {
+  text-align: center;
+}
+
+.description__icon {
+  position: absolute;
+  height: 3.5rem;
+  top: -8%;
+}
+
+.description__review {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  max-width: 580px;
+  text-align: center;
+  font-weight: var(--fw-400);
+}
+
+.description__name {
+  font-weight: var(--fw-700);
+  line-height: 1;
+}
+
+.description__job {
+  color: var(--clr-primary-grayish);
+}
+
+@media (min-width: 1100px) {
+  body {
+    background-size: contain;
+    background-position-y: 35rem;
+    background-position-x: -10rem;
+  }
+
+  .card {
+    display: flex;
+    align-items: center;
+  }
+
+  .description-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .description {
+    order: 1;
+    flex: 1;
+    align-items: flex-start;
+    transform: translateX(20%);
+  }
+
+  .description__review {
+    font-size: 32px;
+    max-width: 44rem;
+    text-align: left;
+  }
+
+  .btn {
+    left: 20%;
+    bottom: -3%;
+  }
+
+  .preview {
+    order: 2;
+    flex: 1;
+  }
+
+  .preview__img {
+    height: 38rem;
+  }
+
+  .preview__bg-pattern {
+    height: 45rem;
+    left: 55%;
+  }
+}
